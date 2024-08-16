@@ -1,0 +1,9 @@
+[Unit] 
+Description=Start broadcast 
+
+[Service]
+ExecStart=/usr/local/bin/broadcast
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
