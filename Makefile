@@ -11,4 +11,15 @@ install:
 		sudo systemctl start $$(basename $$service); \
 	done
 
-.PHONY: install
+uninstall:
+	@echo "Removing services..."
+	@for service in $(services); do \
+		sudo systemctl stop $$(basename $$service); \
+		sudo systemctl disable $$(basename $$service); \
+		sudo rm /etc/systemd/system/$$(basename $$service); \
+	done
+	@echo "Removing ROS environment file..."
+	@sudo rm /etc/ros/env.sh
+	@sudo systemctl daemon-reload
+
+.PHONY: install uninstall
