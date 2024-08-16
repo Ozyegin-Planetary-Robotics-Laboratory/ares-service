@@ -1,5 +1,5 @@
 [Unit] 
-Description=Start broadcasting from connected cameras.
+Description=Ares broadcast routine start-up
 
 [Service]
 ExecStart=/usr/local/bin/broadcast

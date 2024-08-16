@@ -1,10 +1,7 @@
 [Unit]
-Description=Start cannable
+Description=Ares CANable routine configuration
 After=network.target 
 
 [Service]
-ExecStart=/usr/local/bin/cannable
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
+ExecStart=/usr/local/bin/canable
+Restart=no
