@@ -55,8 +55,24 @@ ucanable:
 	@sudo rm /usr/local/bin/canable
 	@echo "canable script uninstalled."
 
-install: broadcast canable roscore
+joystick:
+	@echo "Installing deimos joystick symlink rules..."
+	@sudo cp ./rules/99-deimos-joystick.rules /etc/udev/rules.d/
+	@echo "Deimos joystick rules installed."
+	@echo "Installing ares joystick symlink rules..."
+	@sudo cp ./rules/99-ares-joystick /etc/udev/rules.d/
+	@echo "Ares joystick rules installed."
 
-uninstall: ubroadcast ucanable uroscore
+ujoystick:
+	@echo "Uninstalling deimos joystick symlink rules..."
+	@sudo rm /etc/dev/rules.d/99-deimos-joystick.rules
+	@echo "Deimos joystick rules uninstalled."
+	@echo "Uninstalling ares joystick symlink rules..."
+	@sudo rm /etc/dev/rules.d/99-ares-joystick.rules
+	@echo "Ares joystick rules uninstalled."
 
-.PHONY: install uninstall broadcast canable roscore ubroadcast ucanable uroscore
+install: broadcast canable roscore 
+
+uninstall: ubroadcast ucanable uroscore 
+
+.PHONY: install uninstall broadcast canable roscore ubroadcast ucanable uroscore joystick ujoystick

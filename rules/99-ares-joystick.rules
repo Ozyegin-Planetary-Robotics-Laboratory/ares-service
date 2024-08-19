@@ -1,0 +1,1 @@
+ACTION=="add", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0268", SYMLINK+="/dev/input/aresjs"
