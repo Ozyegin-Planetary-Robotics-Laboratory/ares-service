@@ -60,7 +60,7 @@ joystick:
 	@sudo cp ./rules/99-deimos-joystick.rules /etc/udev/rules.d/
 	@echo "Deimos joystick rules installed."
 	@echo "Installing ares joystick symlink rules..."
-	@sudo cp ./rules/99-ares-joystick /etc/udev/rules.d/
+	@sudo cp ./rules/99-ares-joystick.rules /etc/udev/rules.d/
 	@echo "Ares joystick rules installed."
 
 ujoystick:
