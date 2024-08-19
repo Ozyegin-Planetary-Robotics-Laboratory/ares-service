@@ -62,6 +62,9 @@ joystick:
 	@echo "Installing ares joystick symlink rules..."
 	@sudo cp ./rules/99-ares-joystick.rules /etc/udev/rules.d/
 	@echo "Ares joystick rules installed."
+	@sudo udevadm control --reload-rules
+	@sudo udevadm trigger
+	@echo "udev rules reloaded."
 
 ujoystick:
 	@echo "Uninstalling deimos joystick symlink rules..."
@@ -70,6 +73,9 @@ ujoystick:
 	@echo "Uninstalling ares joystick symlink rules..."
 	@sudo rm /etc/dev/rules.d/99-ares-joystick.rules
 	@echo "Ares joystick rules uninstalled."
+	@sudo udevadm control --reload-rules
+	@sudo udevadm trigger
+	@echo "udev rules reloaded."
 
 install: broadcast canable roscore 
 
