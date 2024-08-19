@@ -59,7 +59,7 @@ canable:
 	@sudo systemctl daemon-reload
 	@echo "canable service installed."
 	@echo "Installing canable udev rule..."
-	@sudo cp ./udev/99-canable.rules /etc/udev/rules.d/
+	@sudo cp ./rules/99-canable.rules /etc/udev/rules.d/
 
 ucanable:
 	@echo "Uninstalling canable service..."
