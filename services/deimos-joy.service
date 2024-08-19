@@ -1,0 +1,8 @@
+[Unit]
+Description=Deimos 18 axis joystick plug-in routine
+After=network.target
+After=docker.service 
+
+[Service]
+ExecStart=/bin/sh -c "docker rm deimosjs; docker run --network host --name deimosjs -e ROS_MASTER_URI=http://ares:11311 -e ROS_HOSTNAME=$(hostname -s) --device=/dev/input/deimosjs ozurover/ares-teleops:latest roslaunch deimos_control joy.launch" 
+Restart=no

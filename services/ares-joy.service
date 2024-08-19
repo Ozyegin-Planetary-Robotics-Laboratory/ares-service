@@ -1,0 +1,8 @@
+[Unit]
+Description=Ares 2 axis joystick plug-in routine
+After=network.target
+After=docker.service 
+
+[Service]
+ExecStart=/bin/sh -c "docker rm aresjs; docker run --network host --name aresjs -e ROS_MASTER_URI=http://ares:11311 -e ROS_HOSTNAME=$(hostname -s) --device=/dev/input/aresjs ozurover/ares-teleops:latest roslaunch ares_control joy.launch" 
+Restart=no

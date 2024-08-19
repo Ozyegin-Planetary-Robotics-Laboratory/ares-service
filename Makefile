@@ -71,6 +71,13 @@ ucanable:
 	@echo "canable script uninstalled."
 
 joystick:
+	# Install services
+	@echo "Installing deimos joystick docker service..."
+	@sudo cp ./services/deimos-joy.service /etc/systemd/system/
+	@echo "Installing ares joystick docker service..."
+	@sudo cp ./services/ares-joy.service /etc/systemd/system/
+	@sudo systemctl daemon-reload
+	# Install udev rules
 	@echo "Installing deimos joystick symlink rules..."
 	@sudo cp ./rules/99-deimos-joystick.rules /etc/udev/rules.d/
 	@echo "Deimos joystick rules installed."
@@ -82,6 +89,7 @@ joystick:
 	@echo "udev rules reloaded."
 
 ujoystick:
+	# Uninstall udev rules
 	@echo "Uninstalling deimos joystick symlink rules..."
 	@sudo rm /etc/dev/rules.d/99-deimos-joystick.rules
 	@echo "Deimos joystick rules uninstalled."
@@ -91,6 +99,12 @@ ujoystick:
 	@sudo udevadm control --reload-rules
 	@sudo udevadm trigger
 	@echo "udev rules reloaded."
+	# Uninstall services
+	@echo "Uninstalling deimos joystick docker service..."
+	@sudo rm /etc/systemd/system/deimos-joy.service
+	@echo "Uninstalling ares joystick docker service..."
+	@sudo rm /etc/systemd/system/ares-joy.service
+	@sudo systemctl daemon-reload
 
 install: broadcast canable roscore 
 

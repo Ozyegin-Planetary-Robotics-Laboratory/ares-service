@@ -1,1 +1,1 @@
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0268", KERNEL=="event*", SYMLINK+="input/aresjs"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", ATTRS{idProduct}=="0268", KERNEL=="js*", SYMLINK+="input/aresjs", RUN+="/bin/systemctl start ares-joy.service"
