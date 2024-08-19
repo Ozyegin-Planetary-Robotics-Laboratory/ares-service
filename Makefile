@@ -91,10 +91,10 @@ joystick:
 ujoystick:
 	# Uninstall udev rules
 	@echo "Uninstalling deimos joystick symlink rules..."
-	@sudo rm /etc/dev/rules.d/99-deimos-joystick.rules
+	@sudo rm /etc/udev/rules.d/99-deimos-joystick.rules
 	@echo "Deimos joystick rules uninstalled."
 	@echo "Uninstalling ares joystick symlink rules..."
-	@sudo rm /etc/dev/rules.d/99-ares-joystick.rules
+	@sudo rm /etc/udev/rules.d/99-ares-joystick.rules
 	@echo "Ares joystick rules uninstalled."
 	@sudo udevadm control --reload-rules
 	@sudo udevadm trigger
