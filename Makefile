@@ -19,6 +19,21 @@ uroscore:
 	@sudo systemctl daemon-reload
 	@echo "roscore service uninstalled."
 
+roslaunch:
+	@echo "Installing roslaunch service..."
+	@sudo cp ./services/roslaunch.service /etc/systemd/system/
+	@sudo systemctl daemon-reload
+	@sudo systemctl enable roslaunch
+	@echo "roslaunch service installed."
+
+uroslaunch:
+	@echo "Uninstalling roslaunch service..."
+	@sudo systemctl stop roslaunch
+	@sudo systemctl disable roslaunch
+	@sudo rm /etc/systemd/system/roslaunch.service
+	@sudo systemctl daemon-reload
+	@echo "roslaunch service uninstalled."
+
 broadcast:
 	@echo "Installing broadcast service..."
 	@sudo cp ./services/broadcast.service /etc/systemd/system/

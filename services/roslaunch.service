@@ -1,0 +1,12 @@
+[Unit]
+Description=Ares ROS routine start-up
+After=roscore.service
+
+[Service]
+Type=forking
+ExecStart=/bin/sh -c ". /opt/ros/noetic/setup.sh; . /etc/ros/env.sh; . /home/kaine/catkin_ws/devel/setup.sh; roslaunch ares_control main.launch & while ! echo exit | nc localhost 11311 > /dev/null; do sleep 1; done"
+Restart=on-failure
+User=kaine
+
+[Install]
+WantedBy=multi-user.target
