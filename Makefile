@@ -3,7 +3,7 @@
 roscore:
 	@echo "Installing roscore environment file..."
 	@sudo mkdir -p /etc/ros
-	@sudo cp ./env.sh /etc/ros/env.sh
+	@sudo cp ./scripts/env.sh /etc/ros/env.sh
 	@echo "Installing roscore service..."
 	@sudo cp ./services/roscore.service /etc/systemd/system/
 	@sudo systemctl daemon-reload
