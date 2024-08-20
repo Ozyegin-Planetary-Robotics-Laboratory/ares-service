@@ -4,5 +4,5 @@ After=network.target
 After=docker.service 
 
 [Service]
-ExecStart=/bin/sh -c "docker kill deimosjs; docker run --network host --name deimosjs -e ROS_MASTER_URI=http://ares:11311 -e ROS_HOSTNAME=$(hostname -s) --device=/dev/input/deimosjs ozurover/ares-teleops:latest roslaunch deimos_control joy.launch" 
+ExecStart=/bin/sh -c "docker kill deimosjs; docker run --rm --network host --name deimosjs -e ROS_MASTER_URI=http://ares:11311 -e ROS_HOSTNAME=$(hostname -s) --device=/dev/input/deimosjs ozurover/ares-teleops:latest roslaunch deimos_control joy.launch" 
 Restart=no
