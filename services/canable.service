@@ -1,7 +1,0 @@
-[Unit]
-Description=Ares CANable routine configuration
-After=network.target 
-
-[Service]
-ExecStart=/usr/local/bin/canable
-Restart=no

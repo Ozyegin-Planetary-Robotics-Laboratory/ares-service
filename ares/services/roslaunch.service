@@ -1,0 +1,15 @@
+[Unit]
+Description=Ares ROS routine start-up
+Requires=roscore.service
+After=roscore.service
+
+[Service]
+Type=simple
+Restart=on-failure
+User=kaine
+Environment="ROS_MASTER_URI=http://ares:11311"
+Environment="ROS_HOSTNAME=ares"
+ExecStart=/bin/sh -c ". /opt/ros/noetic/setup.sh; . /home/kaine/catkin_ws/devel/setup.sh; roslaunch ares_control main.launch"
+
+[Install]
+WantedBy=multi-user.target

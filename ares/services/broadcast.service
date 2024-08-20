@@ -1,5 +1,6 @@
 [Unit] 
 Description=Ares broadcast routine start-up
+Requires=network.target
 
 [Service]
 ExecStart=/usr/local/bin/broadcast

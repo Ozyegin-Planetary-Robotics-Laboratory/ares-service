@@ -1,0 +1,15 @@
+[Unit]
+Description=Ares ROS routine start-up
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+Restart=on-failure
+User=kaine
+Environment="ROS_MASTER_URI=http://ares:11311"
+Environment="ROS_HOSTNAME=ares"
+ExecStart=/bin/sh -c ". /opt/ros/noetic/setup.sh; roscore"
+
+[Install]
+WantedBy=multi-user.target

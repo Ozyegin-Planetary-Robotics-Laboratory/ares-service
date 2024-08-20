@@ -1,1 +1,0 @@
-SUBSYSTEM=="net", ACTION=="add", KERNEL=="can0", RUN+="/bin/systemctl start canable.service"
