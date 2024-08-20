@@ -6,9 +6,9 @@ TARGET_SERVICE_DIR = /etc/systemd/system
 TARGET_SCRIPTS_DIR = /usr/local/bin
 TARGET_UDEVRULES_DIR = /etc/udev/rules.d
 
-SERVICES = $(wildcard $(SOURCE_SERVICE_DIR)/*.service)
-SCRIPTS = $(wildcard $(SOURCE_SCRIPTS_DIR)/*.sh)
-UDEVRULES = $(wildcard $(SOURCE_UDEVRULES_DIR)/*.rules)
+SERVICES = $(notdir $(wildcard $(SOURCE_SERVICE_DIR)/*.service))
+SCRIPTS = $(notdir $(wildcard $(SOURCE_SCRIPTS_DIR)/*.sh))
+UDEVRULES = $(notdir $(wildcard $(SOURCE_UDEVRULES_DIR)/*.rules))
 
 %.service:
 	@echo "Installing $@..."
