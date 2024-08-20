@@ -14,7 +14,6 @@ UDEVRULES = $(notdir $(wildcard $(SOURCE_UDEVRULES_DIR)/*.rules))
 	@echo "Installing $@..."
 	@sudo cp $(SOURCE_SERVICE_DIR)/$@ $(TARGET_SERVICE_DIR)/
 	@sudo systemctl daemon-reload
-	@sudo systemctl enable $@
 	@echo "$@ installed."
 
 %.rules:
@@ -27,7 +26,17 @@ UDEVRULES = $(notdir $(wildcard $(SOURCE_UDEVRULES_DIR)/*.rules))
 	@sudo chmod +x $(TARGET_SCRIPTS_DIR)/$@
 	@echo "$@ installed."
 
-install: $(SERVICES) $(SCRIPTS) $(UDEVRULES)
+install: $(SERVICES) $(SCRIPTS) $(UDEVRULES) enable
 	@echo "Installation complete." 
 
-.PHONY: install
+enable:
+	@echo "Enabling services..."
+	@sudo systemctl enable $(SERVICES)
+	@echo "Services enabled."
+
+disable:
+	@echo "Disabling services..."
+	@sudo systemctl disable $(SERVICES)
+	@echo "Services disabled."
+
+.PHONY: install enable disable

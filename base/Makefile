@@ -29,4 +29,14 @@ UDEVRULES = $(notdir $(wildcard $(SOURCE_UDEVRULES_DIR)/*.rules))
 install: $(SERVICES) $(SCRIPTS) $(UDEVRULES)
 	@echo "Installation complete." 
 
-.PHONY: install
+enable:
+	@echo "Enabling services..."
+	@sudo systemctl enable $(SERVICES)
+	@echo "Services enabled."
+
+disable:
+	@echo "Disabling services..."
+	@sudo systemctl disable $(SERVICES)
+	@echo "Services disabled."
+
+.PHONY: install enable disable
