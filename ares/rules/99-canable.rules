@@ -1,5 +1,6 @@
 SUBSYSTEM=="net" \
 , ACTION=="add" \
 , KERNEL=="can0" \
+, RUN+="/sbin/ip link set can0 down" \
 , RUN+="/sbin/ip link set can0 type can bitrate 500000" \
 , RUN+="/sbin/ip link set can0 up"
